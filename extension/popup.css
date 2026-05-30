@@ -1,0 +1,169 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  font-size: 13px;
+  color: #e8e8e8;
+  background: #1a1a1f;
+  width: 360px;
+}
+
+.wrap {
+  padding: 12px;
+}
+
+h1 {
+  margin: 0 0 8px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+h1 .version {
+  font-size: 10px;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+.meta {
+  font-size: 11px;
+  color: #9ca3af;
+  margin-bottom: 10px;
+  word-break: break-all;
+}
+
+label {
+  display: block;
+  margin-top: 8px;
+  margin-bottom: 4px;
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid #333;
+  border-radius: 6px;
+  background: #25252d;
+  color: #f3f4f6;
+  font-size: 12px;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 48px;
+}
+
+.preview {
+  margin-top: 6px;
+  padding: 6px 8px;
+  background: #25252d;
+  border-radius: 6px;
+  font-size: 11px;
+  color: #d1d5db;
+  max-height: 64px;
+  overflow: hidden;
+  line-height: 1.4;
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.row label {
+  margin: 0;
+}
+
+.actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+}
+
+button {
+  flex: 1;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+#saveBtn {
+  background: #6366f1;
+  color: white;
+}
+
+#saveBtn:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.status {
+  margin-top: 8px;
+  font-size: 11px;
+  min-height: 16px;
+}
+
+.status.error {
+  color: #f87171;
+}
+
+.status.ok {
+  color: #4ade80;
+}
+
+.prefs-section {
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #333;
+}
+
+.hint {
+  font-size: 10px;
+  color: #6b7280;
+  margin: 4px 0 0;
+  line-height: 1.35;
+}
+
+.hint.warn {
+  color: #fbbf24;
+}
+
+.connection-banner {
+  margin-bottom: 10px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.connection-banner.connected {
+  background: rgba(74, 222, 128, 0.15);
+  color: #4ade80;
+  border: 1px solid rgba(74, 222, 128, 0.35);
+}
+
+.connection-banner.disconnected {
+  background: rgba(248, 113, 113, 0.12);
+  color: #f87171;
+  border: 1px solid rgba(248, 113, 113, 0.35);
+}
+
+.prefs-status {
+  margin-top: 6px;
+  color: #9ca3af;
+}
+
+.experimental {
+  margin-top: 8px;
+}

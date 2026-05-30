@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Save to MarkNest</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>Save to MarkNest <span class="version">v0.2.0</span></h1>
+
+      <div id="connectionBanner" class="connection-banner" role="status"></div>
+
+      <p id="quickSaveNotice" class="hint warn" style="display: none">
+        Quick Save is ON — toolbar click saves without this form. Turn it off below to always use this window and add notes before saving.
+      </p>
+
+      <section class="prefs-section">
+        <div class="row">
+          <input id="quickSaveEnabled" type="checkbox" />
+          <label for="quickSaveEnabled">Quick Save (icon saves immediately)</label>
+        </div>
+        <p class="hint">When off, the toolbar icon opens this form. Ctrl+Shift+M always quick-saves.</p>
+        <div class="row experimental">
+          <input id="autoSaveXBookmarkEnabled" type="checkbox" />
+          <label for="autoSaveXBookmarkEnabled">Experimental: auto-save when I bookmark on X</label>
+        </div>
+        <p class="hint warn">Experimental — X changes often. Default off.</p>
+        <p id="prefsStatus" class="hint prefs-status"></p>
+      </section>
+
+      <p id="source" class="meta">Source: …</p>
+      <p id="url" class="meta"></p>
+
+      <label for="title">Title</label>
+      <input id="title" type="text" />
+
+      <label for="notes">Notes (manual save only)</label>
+      <textarea id="notes" rows="2" placeholder="Your thoughts — not added on Quick Save or X auto-bookmark"></textarea>
+
+      <label for="tags">Tags (comma-separated)</label>
+      <input id="tags" type="text" />
+
+      <label for="folder">Folder</label>
+      <input id="folder" type="text" />
+
+      <label for="type">Type</label>
+      <select id="type">
+        <option value="tweet">Tweet</option>
+        <option value="thread">Thread</option>
+        <option value="article">Article</option>
+        <option value="video">Video</option>
+        <option value="other">Other</option>
+      </select>
+
+      <div class="row" style="margin-top: 8px">
+        <input id="favorite" type="checkbox" />
+        <label for="favorite">Favorite</label>
+      </div>
+
+      <label>Captured text preview</label>
+      <div id="capturedPreview" class="preview"></div>
+
+      <label>Selected text preview</label>
+      <div id="selectedPreview" class="preview"></div>
+      <p id="highlightHint" class="hint" style="display: none">
+        Selected text will be saved as a highlight.
+      </p>
+
+      <label for="highlightNote">Highlight note (optional)</label>
+      <input id="highlightNote" type="text" placeholder="Note for this highlight…" />
+
+      <p id="mediaStatus" class="hint"></p>
+      <p id="extractWarn" class="status" style="display: none"></p>
+
+      <div class="actions">
+        <button id="saveBtn" type="button">Save</button>
+      </div>
+      <p id="status" class="status"></p>
+    </div>
+    <script src="sharedCapture.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

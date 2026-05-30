@@ -1,0 +1,53 @@
+# Dependencies & build output
+node_modules/
+dist/
+dist-ssr/
+build/
+
+# Rust / Tauri
+src-tauri/target/
+src-tauri/gen/
+
+# Environment & secrets
+.env
+.env.*
+!.env.example
+
+# Local data & settings (never commit user data)
+*.db
+*.sqlite
+*.sqlite3
+marknest.db
+settings.json
+
+# Logs & debug artifacts
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+marknest-err.txt
+marknest-out.txt
+
+# Editor & agent tooling
+.claude/
+.serena/
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.local
+
+# OS junk
+.DS_Store
+Thumbs.db
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Temporary / draft logo exports (UUID-style filenames)
+logo/*-*-*-*-*.png
+logo/*-*-*-*-*.ico

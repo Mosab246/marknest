@@ -1,0 +1,59 @@
+name: Feature request
+description: Suggest an idea for MarkNest (local-first scope)
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        MarkNest is **local-first**: no cloud account, no X/Twitter API, no telemetry by default.
+
+        Out of scope for most requests: cloud sync, paid scraping, hosted backends, mandatory accounts.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or use case
+      description: What are you trying to do? Why is the current app insufficient?
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+      description: How would you like this to work in the desktop app and/or extension?
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Other tools, workarounds, or simpler approaches you thought about
+    validations:
+      required: false
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Primary component
+      options:
+        - Desktop UI
+        - Rust backend / SQLite
+        - Capture bridge
+        - Chrome extension
+        - Documentation
+        - Other
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope alignment
+      options:
+        - label: This fits local-only storage (no required cloud service)
+          required: true
+        - label: I am okay if this is marked experimental or phased across releases
+          required: false
