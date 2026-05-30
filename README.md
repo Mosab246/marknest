@@ -2,9 +2,22 @@
 
 **Local-first bookmark knowledge manager** — save, organize, search, and annotate links, posts, articles, and web resources on your own machine.
 
-> **Early preview** — APIs, capture behavior, and installers may change. Not production-ready; back up `marknest.db` before upgrades. See [CHANGELOG.md](CHANGELOG.md).
+> **Early preview** — APIs, capture behavior, and installers may change. Not production-ready; back up `marknest.db` before upgrades.
+
+**Repository:** https://github.com/Mosab246/marknest
 
 MarkNest is a desktop app (Tauri + React) with an **optional** Chrome extension for save-from-browser capture. Use the app alone for manual bookmarks, tags, folders, full-text search, highlights, and JSON export — no account, no cloud sync, no X/Twitter API.
+
+---
+
+## Installation
+
+| Method | Status |
+| ------ | ------ |
+| **GitHub Releases** | [Releases](https://github.com/Mosab246/marknest/releases) — installers will be published here when available |
+| **Build from source** | **Supported today** — follow [Quick start](#quick-start) below |
+
+**Until the first release is published, build locally from source** (or run `npm run tauri dev` for development). See [docs/RELEASE.md](docs/RELEASE.md) for producing a Windows installer with `npm run tauri build`.
 
 ---
 
@@ -14,10 +27,16 @@ MarkNest is a desktop app (Tauri + React) with an **optional** Chrome extension 
 | --- | --- |
 | **Your data stays local** | SQLite library on disk — you choose backup/export paths |
 | **No login or cloud** | No MarkNest servers; capture bridge listens on `127.0.0.1` only |
-| **Reader-style UI** | Three-panel layout (sidebar · list · detail), inspired by common reading apps — [not affiliated](docs/TRADEMARKS.md) with Readwise |
+| **Reader-style UI** | Three-panel layout (sidebar · list · detail) — [trademark notes](docs/TRADEMARKS.md) |
 | **Optional extension** | Save pages, selections, and X posts while browsing — desktop app must be running |
 | **Search & organize** | FTS5 search, tags, folders, favorites, archive, unread/read status |
-| **MIT licensed** | Open source — [LICENSE](LICENSE) |
+| **MIT licensed** | [LICENSE](LICENSE) |
+
+---
+
+## Roadmap
+
+Current scope, near-term plans, experimental features, and out-of-scope items: **[ROADMAP.md](ROADMAP.md)**.
 
 ---
 
@@ -32,7 +51,7 @@ MarkNest is a desktop app (Tauri + React) with an **optional** Chrome extension 
 ### Run from source
 
 ```bash
-git clone https://github.com/REPLACE_WITH_ORG/marknest.git
+git clone https://github.com/Mosab246/marknest.git
 cd marknest
 npm install
 npm run tauri dev
@@ -46,17 +65,23 @@ The library UI opens on port `1420`. While the app runs (including minimized to 
 2. Open `chrome://extensions` → **Developer mode** → **Load unpacked**.
 3. Select the [`extension/`](extension/) folder.
 
-Toolbar popup, context-menu save, and `Ctrl+Shift+M` are documented in [extension/README.md](extension/README.md).
+Details: [extension/README.md](extension/README.md).
 
-### Production build
+### Verify a change (same as CI)
 
 ```bash
+npm ci
 npm run build
-cd src-tauri && cargo check   # same checks as CI
-npm run tauri build          # installers under src-tauri/target/release/bundle/
+cargo check --manifest-path src-tauri/Cargo.toml
 ```
 
-Release details: [docs/RELEASE.md](docs/RELEASE.md).
+### Windows installer (maintainers)
+
+```bash
+npm run tauri build
+```
+
+Artifacts: `src-tauri/target/release/bundle/` — see [docs/RELEASE.md](docs/RELEASE.md).
 
 ---
 
@@ -67,14 +92,12 @@ Browser (extension) ──POST /api/capture──► 127.0.0.1:4763 (bridge) ─
                      optional              loopback only
 ```
 
-The extension reads page metadata and visible text in the browser, then sends JSON to the local bridge. The Rust backend persists to `marknest.db` and the React UI reads via Tauri commands. Nothing is sent to a MarkNest cloud — there isn’t one.
-
 | Endpoint | Method | Purpose |
 | -------- | ------ | ------- |
 | `/api/health` | GET | Bridge up when app is running |
 | `/api/capture` | POST | Create/update bookmark from capture payload |
 
-Architecture, modules, and trust boundaries: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) · [SECURITY.md](SECURITY.md) · [PRIVACY.md](PRIVACY.md)
+[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) · [SECURITY.md](SECURITY.md) · [PRIVACY.md](PRIVACY.md)
 
 ### Where files live
 
@@ -90,44 +113,11 @@ Architecture, modules, and trust boundaries: [docs/ARCHITECTURE.md](docs/ARCHITE
 
 ## What’s included
 
-**Core (desktop only)**
+**Core (desktop only)** — bookmarks, FTS search, tags, folders, highlights, export, backup, system tray ([smoke checklist](docs/SMOKE_DESKTOP.md)).
 
-- Bookmark CRUD, types (tweet, thread, article, video, other)
-- Tags, folders, favorites, archive, unread/read
-- Full-text search (SQLite FTS5)
-- Highlights, JSON export, database backup
-- System tray on desktop (close-to-tray keeps bridge alive on Windows — see [docs/SMOKE_DESKTOP.md](docs/SMOKE_DESKTOP.md))
+**With extension (optional)** — page/selection/X capture via local bridge ([smoke checklist](docs/SMOKE_CAPTURE.md)).
 
-**With extension (optional)**
-
-- Save current page, selection, or X/Twitter posts from visible DOM
-- Quick Save and keyboard shortcut
-- Right-click “Save to MarkNest” / highlight capture
-
-**Experimental** (best-effort; may break when sites change)
-
-| Area | Expectation |
-| ---- | ----------- |
-| X/Twitter text extraction | Heuristic DOM capture — no official API; body text can be empty while URL/metadata save |
-| Auto-save on X bookmark | Off by default in extension popup |
-| Tweet/video embeds | May load `platform.twitter.com` when viewing; saved text remains local |
-
----
-
-## What we are not building (yet)
-
-- Cloud sync, teams, or accounts
-- X/Twitter API or paid scraping
-- JSON import (planned)
-- Built-in AI summaries or vector search
-
-Roadmap ideas: [CHANGELOG.md](CHANGELOG.md) · open a [feature request](issues/new?template=feature_request.yml).
-
----
-
-## Tech stack
-
-Tauri 2 · React · TypeScript · Vite · Tailwind / shadcn · Rust · SQLite (`rusqlite`) · Chrome extension (MV3)
+**Experimental** — X DOM capture, auto-save on X bookmark (off by default), tweet embeds; see [ROADMAP.md](ROADMAP.md#experimental-features).
 
 ---
 
@@ -135,30 +125,26 @@ Tauri 2 · React · TypeScript · Vite · Tailwind / shadcn · Rust · SQLite (`
 
 | Symptom | Try |
 | ------- | --- |
-| Extension: “MarkNest not running” | Start app or restore from tray; confirm bridge **Running** in Settings |
+| Extension: “MarkNest not running” | Start app or restore from tray; bridge **Running** in Settings |
 | Port `4763` in use | Tray → **Quit MarkNest**, then restart |
 | Extension errors after update | Reload on `chrome://extensions` |
 
-Full guide: [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md)
+[docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md)
 
 ---
 
 ## Contributing
 
-Contributions are welcome — documentation, clear bug reports with repro steps, and focused PRs are especially helpful.
-
 | | |
 | --- | --- |
-| [Contributing guide](CONTRIBUTING.md) | Setup, CI-equivalent checks, PR expectations |
-| [Report a bug](issues/new?template=bug_report.yml) | Desktop, extension, or bridge |
-| [Request a feature](issues/new?template=feature_request.yml) | Local-first scope |
-| [Open a pull request](pulls) | Use the PR template |
-
-**Good first issues:** improve [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) or [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md), UI copy/empty states, capture regression write-ups with repro steps, docs/CI-only changes.
+| [Contributing guide](CONTRIBUTING.md) | Setup, CI checks, PR expectations |
+| [Report a bug](https://github.com/Mosab246/marknest/issues/new?template=bug_report.yml) | Desktop, extension, or bridge |
+| [Request a feature](https://github.com/Mosab246/marknest/issues/new?template=feature_request.yml) | Local-first scope |
+| [Issues](https://github.com/Mosab246/marknest/issues) | All open threads |
+| [Pull requests](https://github.com/Mosab246/marknest/pulls) | Use the PR template |
+| [Security](https://github.com/Mosab246/marknest/security) | Private advisories for vulnerabilities |
 
 CI on `main`: `npm run build` + `cargo check` — [.github/workflows/ci.yml](.github/workflows/ci.yml).
-
-**Before publishing this repo:** replace `REPLACE_WITH_ORG` in the clone URL above with your GitHub org or username.
 
 ---
 
@@ -166,16 +152,15 @@ CI on `main`: `npm run build` + `cargo check` — [.github/workflows/ci.yml](.gi
 
 | Doc | Description |
 | --- | ----------- |
+| [ROADMAP.md](ROADMAP.md) | Scope, roadmap, experimental, out of scope |
+| [CHANGELOG.md](CHANGELOG.md) | Release notes |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | Development workflow |
-| [SECURITY.md](SECURITY.md) | Bridge, extension permissions, reporting |
+| [SECURITY.md](SECURITY.md) | Bridge, extension, reporting |
 | [PRIVACY.md](PRIVACY.md) | Local data and optional network use |
 | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | Components and data flow |
 | [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) | Common fixes |
-| [docs/RELEASE.md](docs/RELEASE.md) | Build artifacts and what not to commit |
-| [docs/TRADEMARKS.md](docs/TRADEMARKS.md) | X, Twitter, Readwise, and other marks |
-| [docs/SMOKE_CAPTURE.md](docs/SMOKE_CAPTURE.md) | Extension smoke checklist |
-| [docs/SMOKE_DESKTOP.md](docs/SMOKE_DESKTOP.md) | Desktop / tray smoke checklist |
-| [CHANGELOG.md](CHANGELOG.md) | Release notes |
+| [docs/RELEASE.md](docs/RELEASE.md) | Builds and GitHub Releases |
+| [docs/TRADEMARKS.md](docs/TRADEMARKS.md) | Third-party marks |
 
 ---
 

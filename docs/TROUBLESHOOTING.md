@@ -89,5 +89,5 @@ See [RELEASE.md](RELEASE.md) for release build steps.
 ## Still stuck?
 
 1. Check [ARCHITECTURE.md](ARCHITECTURE.md) for how components connect.
-2. Search [GitHub issues](https://github.com/REPLACE_WITH_ORG/marknest/issues) or open a **bug report** with versions, OS, and reproduction steps.
-3. Security issues: [SECURITY.md](../SECURITY.md)—not a public issue with exploit details.
+2. Search [GitHub issues](https://github.com/Mosab246/marknest/issues) or open a [bug report](https://github.com/Mosab246/marknest/issues/new?template=bug_report.yml) with versions, OS, and reproduction steps.
+3. Security issues: [GitHub Security Advisories](https://github.com/Mosab246/marknest/security)—not a public issue with exploit details.

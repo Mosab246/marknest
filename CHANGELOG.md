@@ -9,8 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- GitHub issue/PR templates, CI workflow (`npm run build`, `cargo check`).
-- Docs: ARCHITECTURE, TROUBLESHOOTING, RELEASE, TRADEMARKS.
+- [ROADMAP.md](ROADMAP.md) and release-readiness docs polish.
+- GitHub links for https://github.com/Mosab246/marknest (issues, releases, security).
 
 ## [0.2.0] - 2026-05-30
 
@@ -27,5 +27,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Early preview: X/Twitter DOM capture and experimental auto-bookmark features are best-effort and may break when sites change.
 - JSON import and cloud sync are not included in this release.
 
-[Unreleased]: https://github.com/PLACEHOLDER/marknest/compare/v0.2.0...HEAD
-[0.2.0]: https://github.com/PLACEHOLDER/marknest/releases/tag/v0.2.0
+[Unreleased]: https://github.com/Mosab246/marknest/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/Mosab246/marknest/releases/tag/v0.2.0

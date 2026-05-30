@@ -60,7 +60,7 @@ if [ -f package-lock.json ]; then npm ci; else npm install; fi
 npm run build
 
 # Rust
-cd src-tauri && cargo check
+cargo check --manifest-path src-tauri/Cargo.toml
 ```
 
 **PowerShell (Windows):**
@@ -68,19 +68,20 @@ cd src-tauri && cargo check
 ```powershell
 if (Test-Path package-lock.json) { npm ci } else { npm install }
 npm run build
-Set-Location src-tauri; cargo check
+cargo check --manifest-path src-tauri/Cargo.toml
 ```
 
 CI does **not** run `npm run tauri build`, lint scripts, or tests that are not defined in `package.json`—those are optional local checks before a release (see [docs/RELEASE.md](docs/RELEASE.md)).
 
 ## Reporting issues
 
-Use GitHub issue templates (after the repo is public):
-
 | Template | Use for |
 | -------- | ------- |
-| [Bug report](https://github.com/REPLACE_WITH_ORG/marknest/issues/new?template=bug_report.yml) | Broken behavior, regressions, build failures |
-| [Feature request](https://github.com/REPLACE_WITH_ORG/marknest/issues/new?template=feature_request.yml) | Ideas that fit local-first scope |
+| [Bug report](https://github.com/Mosab246/marknest/issues/new?template=bug_report.yml) | Broken behavior, regressions, build failures |
+| [Feature request](https://github.com/Mosab246/marknest/issues/new?template=feature_request.yml) | Ideas that fit local-first scope |
+| [All issues](https://github.com/Mosab246/marknest/issues) | Search before filing duplicates |
+
+Roadmap context: [ROADMAP.md](ROADMAP.md).
 
 Include OS, MarkNest version, extension version (if relevant), and numbered reproduction steps.
 

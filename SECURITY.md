@@ -2,6 +2,8 @@
 
 MarkNest is a **local-first** desktop application. Your library lives on your machine; there is no MarkNest cloud account or hosted backend.
 
+**Repository:** https://github.com/Mosab246/marknest
+
 ## Supported versions
 
 | Version | Supported |
@@ -38,7 +40,7 @@ Content scripts run on pages matching `http://*/*` and `https://*/*` so capture 
 
 ## Desktop app
 
-- **SQLite** database and **settings** are stored under the Tauri app data directory on your OS (see README).
+- **SQLite** database and **settings** are stored under the Tauri app data directory on your OS (see [README.md](README.md)).
 - **No telemetry** is built into MarkNest by default.
 - **Autostart** and **open external URL** use normal OS APIs; review those features in Settings if you use them.
 
@@ -46,12 +48,15 @@ Content scripts run on pages matching `http://*/*` and `https://*/*` so capture 
 
 If you believe you have found a security issue in MarkNest:
 
-1. **Do not** open a public GitHub issue with exploit details.
-2. Open a **private security advisory** on GitHub (preferred once the repo is public), **or** email the maintainers at a contact address listed on the repository profile.
+1. **Do not** open a public GitHub issue with exploit details or proof-of-concept steps that could harm users.
+2. **Preferred:** [Open a private security advisory](https://github.com/Mosab246/marknest/security/advisories/new) on GitHub (Security → Advisories → Report a vulnerability).
+3. **Alternative:** Use [GitHub Security](https://github.com/Mosab246/marknest/security) to find the advisory reporting flow for this repository.
 
-<!-- TODO: Replace with a dedicated security@ or GitHub Security Advisory URL when the public repo is live. -->
+<!-- TODO: Add a dedicated security@ email here if the project adopts one later. -->
 
-Include:
+For **non-sensitive** security questions (e.g. how the bridge binds, extension permissions), you may open a normal [issue](https://github.com/Mosab246/marknest/issues) with the **question** intent or ask in discussions if enabled—still avoid posting exploit details publicly.
+
+Include in private reports:
 
 - A clear description and impact
 - Steps to reproduce

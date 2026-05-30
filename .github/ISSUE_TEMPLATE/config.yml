@@ -1,8 +1,11 @@
 blank_issues_enabled: false
 contact_links:
-  - name: Security report
-    url: https://github.com/REPLACE_WITH_ORG/marknest/blob/main/SECURITY.md
-    about: Report vulnerabilities privately—do not open a public issue with exploit details.
+  - name: Security advisories
+    url: https://github.com/Mosab246/marknest/security/advisories/new
+    about: Report vulnerabilities privately—do not post exploit details in public issues.
+  - name: Security policy
+    url: https://github.com/Mosab246/marknest/blob/main/SECURITY.md
+    about: Local bridge, extension permissions, and supported versions.
   - name: Contributing guide
-    url: https://github.com/REPLACE_WITH_ORG/marknest/blob/main/CONTRIBUTING.md
+    url: https://github.com/Mosab246/marknest/blob/main/CONTRIBUTING.md
     about: Development setup, CI checks, and pull request expectations.
