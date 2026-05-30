@@ -4,7 +4,6 @@
 
 > **Early preview** — APIs, capture behavior, and installers may change. Not production-ready; back up `marknest.db` before upgrades.
 
-**Repository:** https://github.com/Mosab246/marknest
 
 MarkNest is a desktop app (Tauri + React) with an **optional** Chrome extension for save-from-browser capture. Use the app alone for manual bookmarks, tags, folders, full-text search, highlights, and JSON export — no account, no cloud sync, no X/Twitter API.
 
