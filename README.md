@@ -35,7 +35,17 @@ MarkNest is a desktop app (Tauri + React) with an **optional** Chrome extension 
 
 ## Roadmap
 
-Current scope, near-term plans, experimental features, and out-of-scope items: **[ROADMAP.md](ROADMAP.md)**.
+MarkNest is early-preview software. The public release focuses on a small, useful local-first bookmark library. Larger capture, AI, and sync features are intentionally future work.
+
+| Stage | Focus |
+| --- | --- |
+| Current public scope | Local-first desktop bookmark library, manual saves, notes, tags, folders, favorites, archive, unread/read status, full-text search, highlights, JSON export, database backup, optional browser extension, local capture bridge on `127.0.0.1`. |
+| Near-term | First GitHub Release with Windows installer, cleaner extension packaging, JSON/CSV import, better backup/restore, better capture reliability, screenshots/demo GIF, more contributor-friendly issues. |
+| Later | Chrome Web Store packaging, Firefox extension, local AI summaries, optional OpenAI summaries, semantic search, Readwise-style import/export, multi-source capture, self-hosted/user-controlled sync. |
+| Experimental | X/Twitter DOM capture, X native bookmark auto-save, video/media capture, browser capture heuristics. |
+| Out of scope for now | Cloud account, login/auth, official X/Twitter API dependency, mobile app, full Readwise clone. |
+
+See [ROADMAP.md](ROADMAP.md) for the detailed roadmap.
 
 ---
 
