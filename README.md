@@ -11,12 +11,16 @@ MarkNest is a desktop app (Tauri + React) with an **optional** Chrome extension 
 
 ## Installation
 
-| Method | Status |
-| ------ | ------ |
-| **GitHub Releases** | [Releases](https://github.com/Mosab246/marknest/releases) — installers will be published here when available |
-| **Build from source** | **Supported today** — follow [Quick start](#quick-start) below |
+### Download (recommended)
 
-**Until the first release is published, build locally from source** (or run `npm run tauri dev` for development). See [docs/RELEASE.md](docs/RELEASE.md) for producing a Windows installer with `npm run tauri build`.
+Download **MarkNest v0.2.0** from [GitHub Releases](https://github.com/Mosab246/marknest/releases):
+
+- **Windows installer** — run the `.exe` or `.msi` asset for your platform from the [v0.2.0 release](https://github.com/Mosab246/marknest/releases/tag/v0.2.0).
+- **Chrome extension (optional)** — download `marknest-extension-v0.2.0.zip` from the same release, unzip, then in Chrome open `chrome://extensions` → **Developer mode** → **Load unpacked** → select the unzipped folder. The desktop app must be running for capture (bridge on `127.0.0.1:4763`).
+
+### Build from source (developers)
+
+Clone the repo and follow [Quick start](#quick-start) below, or see [docs/RELEASE.md](docs/RELEASE.md) to produce installers with `npm run tauri build`.
 
 ---
 
